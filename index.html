@@ -33,6 +33,22 @@
       overflow-x: hidden;
     }
 
+    /* FONDO ANIMADO */
+    body::before {
+      content: '';
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: 
+        radial-gradient(ellipse at 20% 50%, rgba(79,110,247,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(124,58,237,0.06) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
+      animation: bgPulse 8s ease-in-out infinite alternate;
+    }
+    @keyframes bgPulse {
+      from { opacity: 0.6; }
+      to { opacity: 1; }
+    }
+
+    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 1.2rem 2rem;
@@ -56,6 +72,7 @@
     }
     .nav-links a:hover { color: var(--text); }
 
+    /* HERO */
     .hero {
       min-height: 100vh;
       display: flex; align-items: center;
@@ -73,6 +90,7 @@
       font-weight: 500; margin-bottom: 1.5rem;
       animation: fadeUp 0.6s ease both;
     }
+    .hero-badge i { font-size: 10px; }
     .hero h1 {
       font-family: 'Syne', sans-serif;
       font-size: clamp(3rem, 7vw, 5.5rem);
@@ -98,7 +116,9 @@
       text-decoration: none; transition: all 0.2s;
       cursor: pointer; border: none;
     }
-    .btn-primary { background: var(--accent); color: white; }
+    .btn-primary {
+      background: var(--accent); color: white;
+    }
     .btn-primary:hover { background: #3d5ce4; transform: translateY(-2px); }
     .btn-ghost {
       background: var(--card);
@@ -107,7 +127,6 @@
     }
     .btn-ghost:hover { background: var(--bg3); transform: translateY(-2px); }
 
-    /*  DOTS CORREGIDO */
     .hero-dots {
       position: absolute; right: 0; top: 50%;
       transform: translateY(-50%);
@@ -120,6 +139,7 @@
       display: block;
     }
 
+    /* SECTIONS */
     section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
     .section-label {
       font-size: 0.75rem; font-weight: 700; letter-spacing: 3px;
@@ -133,6 +153,7 @@
       margin-bottom: 3rem;
     }
 
+    /* SKILLS */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -153,6 +174,7 @@
     .skill-card i { font-size: 1.8rem; margin-bottom: 0.5rem; display: block; }
     .skill-card span { font-size: 0.85rem; color: var(--muted); font-weight: 500; }
 
+    /* PROJECTS */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -207,6 +229,7 @@
       color: #7c9ff5;
     }
 
+    /* STATS */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -225,6 +248,7 @@
     }
     .stat-label { font-size: 0.85rem; color: var(--muted); }
 
+    /* CONTACT */
     .contact-grid {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 1rem;
@@ -247,17 +271,20 @@
     .contact-card h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 2px; }
     .contact-card span { font-size: 0.8rem; color: var(--muted); }
 
+    /* FOOTER */
     footer {
       border-top: 1px solid var(--border);
       padding: 2rem; text-align: center;
       color: var(--muted); font-size: 0.85rem;
     }
 
+    /* DIVIDER */
     .divider {
       border: none; border-top: 1px solid var(--border);
       max-width: 1100px; margin: 0 auto;
     }
 
+    /* ANIMATIONS */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -269,35 +296,107 @@
     }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+    /* CURSOR PERSONALIZADO */
+    .cursor {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--accent); position: fixed;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s;
+      mix-blend-mode: screen;
+    }
+    .cursor-ring {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 1px solid rgba(79,110,247,0.5);
+      position: fixed; pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: left 0.12s ease, top 0.12s ease, width 0.2s, height 0.2s;
+    }
+
+    /* HAMBURGER */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px; background: none; border: none;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--text); border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* ABOUT TEXT */
+    .about-text {
+      font-size: 1.05rem; color: var(--muted);
+      line-height: 1.8; max-width: 680px;
+      margin-bottom: 2.5rem;
+    }
+    .about-text strong { color: var(--text); }
+
+    /* TYPING */
+    .typing-cursor {
+      display: inline-block; width: 3px; height: 0.85em;
+      background: var(--accent); margin-left: 2px;
+      vertical-align: middle;
+      animation: blink 0.9s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
     @media (max-width: 600px) {
       .contact-grid { grid-template-columns: 1fr; }
       .hero-dots { display: none; }
-      nav .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .cursor, .cursor-ring { display: none; }
+      nav .nav-links {
+        display: none;
+        position: fixed; top: 64px; left: 0; right: 0;
+        background: rgba(10,10,15,0.97);
+        flex-direction: column; gap: 0;
+        border-bottom: 1px solid var(--border);
+        backdrop-filter: blur(12px);
+        z-index: 99;
+      }
+      nav .nav-links.open { display: flex; }
+      nav .nav-links li { border-bottom: 1px solid var(--border); }
+      nav .nav-links a { display: block; padding: 1rem 2rem; font-size: 1rem; }
     }
   </style>
 </head>
 <body>
 
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
   <nav>
     <a href="#" class="nav-logo">RC<span>.</span></a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="#sobre-mi">Sobre mí</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#proyectos">Proyectos</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
+  <!-- HERO -->
   <div class="hero">
     <div class="hero-content">
       <div class="hero-badge">
         <i class="fa-solid fa-circle" style="color:#4ade80;font-size:8px"></i>
         Disponible para proyectos
       </div>
-      <h1><span class="name">Ramón Castellanos</span></h1>
+      <h1>
+        <span class="name">Ramón Castellanos</span>
+      </h1>
       <p class="hero-sub">
-        Ingeniero de Sistemas con 1-2 años de experiencia construyendo 
-        aplicaciones web modernas con Java, Spring Boot, React y más.
+        Ingeniero de Sistemas especializado en <strong id="typingText" style="color:var(--text)"></strong><span class="typing-cursor"></span><br>
+        construyendo aplicaciones web modernas con Java, Spring Boot y React.
       </p>
       <div class="hero-cta">
         <a href="#proyectos" class="btn btn-primary">
@@ -308,23 +407,32 @@
         </a>
       </div>
     </div>
-
-    <!--  ID corregido, sin script interno -->
-    <div class="hero-dots" id="dots"></div>
+    <div class="hero-dots">
+      <script>
+        for(let i=0;i<48;i++) document.write('<span></span>');
+      </script>
+    </div>
   </div>
 
   <hr class="divider">
 
+  <!-- SOBRE MI -->
   <section id="sobre-mi">
     <p class="section-label fade-in">Sobre mí</p>
     <h2 class="section-title fade-in">Apasionado por crear<br>soluciones digitales</h2>
+    <p class="about-text fade-in">
+      Soy <strong>Ramón Castellanos</strong>, Ingeniero de Sistemas con experiencia en desarrollo 
+      <strong>Full Stack</strong>. Me especializo en construir APIs robustas con <strong>Java y Spring Boot</strong> 
+      en el backend, y experiencias de usuario fluidas con <strong>React y JavaScript</strong> en el frontend.
+      Me apasiona el código limpio, los buenos patrones de diseño y seguir aprendiendo cada día.
+    </p>
     <div class="stats-grid">
       <div class="stat-card fade-in">
-        <div class="stat-number">2</div>
-        <div class="stat-label">Años de experiencia</div>
+        <div class="stat-number">10+</div>
+        <div class="stat-label">Años de experiencia 10 en PHP y 3 en JAVA</div>
       </div>
       <div class="stat-card fade-in">
-        <div class="stat-number">4+</div>
+        <div class="stat-number">12+</div>
         <div class="stat-label">Tecnologías dominadas</div>
       </div>
       <div class="stat-card fade-in">
@@ -340,6 +448,7 @@
 
   <hr class="divider">
 
+  <!-- SKILLS -->
   <section id="skills">
     <p class="section-label fade-in">Tecnologías</p>
     <h2 class="section-title fade-in">Mi stack</h2>
@@ -376,11 +485,28 @@
         <i class="fa-brands fa-git-alt" style="color:#f05032"></i>
         <span>Git</span>
       </div>
+      <div class="skill-card fade-in">
+        <i class="fa-brands fa-php" style="color:#777bb4"></i>
+        <span>PHP</span>
+      </div>
+      <div class="skill-card fade-in">
+        <i class="fa-brands fa-html5" style="color:#e34f26"></i>
+        <span>HTML5</span>
+      </div>
+      <div class="skill-card fade-in">
+        <i class="fa-brands fa-css3-alt" style="color:#1572b6"></i>
+        <span>CSS3</span>
+      </div>
+      <div class="skill-card fade-in">
+        <i class="fa-solid fa-rotate" style="color:#764abc"></i>
+        <span>Redux</span>
+      </div>
     </div>
   </section>
 
   <hr class="divider">
 
+  <!-- PROYECTOS -->
   <section id="proyectos">
     <p class="section-label fade-in">Proyectos</p>
     <h2 class="section-title fade-in">Lo que he construido</h2>
@@ -388,17 +514,35 @@
 
       <div class="project-card fade-in">
         <div class="project-header">
+          <div class="project-icon"><i class="fa-solid fa-umbrella-beach"></i></div>
+          <div class="project-links">
+            <a href="https://makayclubdeplaya.com/membresia/" target="_blank" class="project-link" title="Ver sitio">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+        <h3>Makay Beach Club — Membresías</h3>
+        <p>Sistema completo de gestión de membresías para un beach club en Isla de Margarita. Incluye registro web, panel staff, carnets digitales con QR y verificación en tiempo real.</p>
+        <div class="project-tags">
+          <span class="tag">PHP</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">QR Code</span>
+          <span class="tag">HTML/CSS</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-header">
           <div class="project-icon"><i class="fa-solid fa-store"></i></div>
           <div class="project-links">
-            <a href="https://github.com/RamonCastellanos/gapsi-ecommerce" 
-               target="_blank" class="project-link">
+            <a href="https://github.com/RamonCastellanos/gapsi-ecommerce" target="_blank" class="project-link">
               <i class="fa-brands fa-github"></i>
             </a>
           </div>
         </div>
         <h3>Gapsi e-Commerce</h3>
-        <p>Sistema de mantenimiento de proveedores con CRUD completo, 
-           paginación, virtual scroll y PWA instalable en móvil.</p>
+        <p>Sistema de mantenimiento de proveedores con CRUD completo, paginación, virtual scroll y PWA instalable en móvil.</p>
         <div class="project-tags">
           <span class="tag">React 19</span>
           <span class="tag">Spring Boot</span>
@@ -406,6 +550,46 @@
           <span class="tag">Material-UI</span>
           <span class="tag">H2</span>
           <span class="tag">PWA</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-header">
+          <div class="project-icon"><i class="fa-solid fa-wrench"></i></div>
+          <div class="project-links">
+            <a href="https://github.com/RamonCastellanos/ferreteria-sistema1" target="_blank" class="project-link" title="Ver código">
+              <i class="fa-brands fa-github"></i>
+            </a>
+          </div>
+        </div>
+        <h3>Sistema de Inventario — Ferretería</h3>
+        <p>Sistema fullstack de gestión de inventario para ferretería. Incluye autenticación JWT, control de productos, categorías, marcas, movimientos de stock y alertas de bajo inventario.</p>
+        <div class="project-tags">
+          <span class="tag">Java</span>
+          <span class="tag">Spring Boot</span>
+          <span class="tag">React</span>
+          <span class="tag">Vite</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">JWT</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-header">
+          <div class="project-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+          <div class="project-links">
+            <a href="https://github.com/RamonCastellanos" target="_blank" class="project-link" title="Ver código">
+              <i class="fa-brands fa-github"></i>
+            </a>
+          </div>
+        </div>
+        <h3>Netpc Technology — Sistema Taller</h3>
+        <p>Sistema de gestión para taller técnico con módulos de órdenes de servicio, presupuestos, historial de reparaciones, inventario de repuestos y generación de reportes en PDF. Autenticación segura con JWT y arquitectura REST.</p>
+        <div class="project-tags">
+          <span class="tag">Spring Boot</span>
+          <span class="tag">React + Vite</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">JWT</span>
         </div>
       </div>
 
@@ -425,6 +609,7 @@
 
   <hr class="divider">
 
+  <!-- CONTACTO -->
   <section id="contacto">
     <p class="section-label fade-in">Contacto</p>
     <h2 class="section-title fade-in">Hablemos</h2>
@@ -450,8 +635,7 @@
           <span>Ramon Castellanos</span>
         </div>
       </a>
-      <a href="https://github.com/RamonCastellanos?tab=repositories" 
-         target="_blank" class="contact-card fade-in">
+      <a href="https://github.com/RamonCastellanos?tab=repositories" target="_blank" class="contact-card fade-in">
         <div class="contact-icon"><i class="fa-solid fa-code-branch"></i></div>
         <div>
           <h4>Repositorios</h4>
@@ -461,28 +645,60 @@
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
-    <p>Diseñado y desarrollado por <strong>Ramon Castellanos</strong> · 2025</p>
+    <p>Diseñado y desarrollado por <strong>Ramon Castellanos</strong> · 2026</p>
   </footer>
 
-  <!--  TODOS LOS SCRIPTS AL FINAL -->
   <script>
-    // Genera los puntos decorativos
-    const dots = document.getElementById('dots');
-    for (let i = 0; i < 48; i++) {
-      const span = document.createElement('span');
-      dots.appendChild(span);
-    }
-
-    // Animaciones scroll
+    // Intersection Observer para fade-in
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) e.target.classList.add('visible');
       });
     }, { threshold: 0.1 });
-
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  </script>
 
+    // Cursor personalizado
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      ring.style.left = e.clientX + 'px';
+      ring.style.top = e.clientY + 'px';
+    });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // Typing effect
+    const words = ['backend robusto', 'APIs REST', 'React moderno', 'Spring Boot', 'full stack'];
+    let wi = 0, ci = 0, deleting = false;
+    const el = document.getElementById('typingText');
+    function type() {
+      const word = words[wi];
+      if (!deleting) {
+        el.textContent = word.slice(0, ++ci);
+        if (ci === word.length) { deleting = true; setTimeout(type, 1800); return; }
+      } else {
+        el.textContent = word.slice(0, --ci);
+        if (ci === 0) { deleting = false; wi = (wi + 1) % words.length; }
+      }
+      setTimeout(type, deleting ? 60 : 100);
+    }
+    type();
+  </script>
 </body>
 </html>
