@@ -344,6 +344,28 @@
     }
     @keyframes blink { 50% { opacity: 0; } }
 
+    /* WHATSAPP FLOTANTE */
+    #waFloat {
+      position: fixed; bottom: 28px; right: 28px;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #25d366;
+      color: #fff; font-size: 1.6rem;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      z-index: 1000; text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    #waFloat:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.7);
+    }
+    @keyframes waPulse {
+      0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+      70% { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+      100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+    #waFloat { animation: waPulse 2s infinite; }
+
     @media (max-width: 600px) {
       .contact-grid { grid-template-columns: 1fr; }
       .hero-dots { display: none; }
@@ -574,25 +596,6 @@
         </div>
       </div>
 
-      <div class="project-card fade-in">
-        <div class="project-header">
-          <div class="project-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-          <div class="project-links">
-            <a href="https://github.com/RamonCastellanos" target="_blank" class="project-link" title="Ver código">
-              <i class="fa-brands fa-github"></i>
-            </a>
-          </div>
-        </div>
-        <h3>Netpc Technology — Sistema Taller</h3>
-        <p>Sistema de gestión para taller técnico con módulos de órdenes de servicio, presupuestos, historial de reparaciones, inventario de repuestos y generación de reportes en PDF. Autenticación segura con JWT y arquitectura REST.</p>
-        <div class="project-tags">
-          <span class="tag">Spring Boot</span>
-          <span class="tag">React + Vite</span>
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">JWT</span>
-        </div>
-      </div>
-
       <div class="project-card fade-in" style="opacity:0.5">
         <div class="project-header">
           <div class="project-icon"><i class="fa-solid fa-plus"></i></div>
@@ -642,8 +645,20 @@
           <span>Ver todos mis proyectos</span>
         </div>
       </a>
+      <a href="https://wa.me/584161056374?text=Hola%20Ram%C3%B3n%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20hablar%20contigo." target="_blank" class="contact-card fade-in" style="border-color:rgba(37,211,102,0.3)">
+        <div class="contact-icon" style="background:rgba(37,211,102,0.15);color:#25d366"><i class="fa-brands fa-whatsapp"></i></div>
+        <div>
+          <h4>WhatsApp</h4>
+          <span>+58 416 105 6374</span>
+        </div>
+      </a>
     </div>
   </section>
+
+  <!-- BOTÓN FLOTANTE WHATSAPP -->
+  <a href="https://wa.me/584161056374?text=Hola%20Ram%C3%B3n%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20hablar%20contigo." target="_blank" id="waFloat" title="Contactar por WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
 
   <!-- FOOTER -->
   <footer>
